@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+{%block title%} CRUDOPS {%endblock%}
+{%block content%}
+    <h1>Create Todo</h1>
+    <form action="create" method="post" class="form-group">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <input type="submit" name='save' value="Create" class="btn btn-secondary">
+            </div>
+            {{form.title}}
+        </div>
+        <br>
+    </form>
+{%endblock%} 

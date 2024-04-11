@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}
+  
+{% endblock  %}
+{% block content %}
+    <h2>View Your Todo List</h2>
+    {% for i in user.todo.all %}
+      <p><a href="{{i.id}}">{{i.title}}</a></p>
+    {% endfor %}
+{% endblock %}

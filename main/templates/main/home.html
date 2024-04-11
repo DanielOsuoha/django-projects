@@ -1,0 +1,39 @@
+{%extends 'base.html'%}
+{%block title%}Home Page{%endblock%}
+
+  
+{%block content%}
+<h1>New Tech app again<br>TodoLists on my DB<hr> </h1>
+<!-- <ul> -->
+    <form action="handle" method="post">
+        {% csrf_token %}
+        {%for i in object%}
+        <h3><li>{{i.title}}</li></h3>
+        <ul>
+            {%for j in i.item_set.all%}
+    
+                {%if j.complete == True%}
+                    <p><input type="checkbox" name="c{{j.id}}" value="checked" checked>{{j.text}}</p>
+                {%else%}
+                    <p><input type="checkbox" name="c{{j.id}}" value="checked">{{j.text}}</p>    
+                {%endif%}
+                <input type="submit" name = 'del{{j.id}}' value="Delete"><br><br>
+            {%endfor%} 
+
+            <input type="hidden" name="{{i.id}}", value="{{i.title}}">
+            <div class="input-group mb-1">
+                <div class="input-group-prepend">
+                    <input type="text" name="text{{i.id}}">
+                </div>
+                <input type="submit" name="add" value="Add Item" class="btn btn-outline-success"><br><br>
+            </div>
+            <input type="submit" name = 'rot{{i.id}}' value="Rotate" class="btn btn-outline-dark"><br><br>
+            <input type="submit" name="save" value="Save" class="btn btn-secondary">
+        </ul>
+        {%endfor%}  
+        <input type="submit" name="clear" value="Clear"> 
+        <hr><br><br>
+    </form>
+    <a href="{% url 'create'%}"><button>Create Todo</button></a>
+<!-- </ul> -->
+{%endblock%}
