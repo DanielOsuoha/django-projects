@@ -3,7 +3,7 @@
 
   
 {%block content%}
-<h1>New Tech app again<br>TodoLists on my DB<hr> </h1>
+<h1>TODO LIST</h1>
 <!-- <ul> -->
     <form action="handle" method="post">
         {% csrf_token %}
@@ -31,9 +31,9 @@
             <input type="submit" name="save" value="Save" class="btn btn-secondary">
         </ul>
         {%endfor%}  
-        <input type="submit" name="clear" value="Clear"> 
+        <input type="submit" name="clear" value=" Clear " class="btn btn-dark"> 
         <hr><br><br>
     </form>
-    <a href="{% url 'create'%}"><button>Create Todo</button></a>
+    <a href="{% url 'create'%}"><button class="btn btn-success">Create Todo</button></a>
 <!-- </ul> -->
 {%endblock%}
