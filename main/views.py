@@ -15,15 +15,11 @@ def index(request, id):
     else:
         return redirect('main/view')
 def home(request):
-  # show = todo.objects.get(id=id)
     show = todo.objects.all()
     l = []
     for i in show:
-        # ls = i.item_set.all
         l.append(i)    
-    # return HttpResponse("<h1>New Tech app again<br>TodoLists on my DB<hr> %s </h1>" % show.title)
     context = {
-        # 'object':show,
         'object':l
         }
     return render(request, 'main/home.html',context)
